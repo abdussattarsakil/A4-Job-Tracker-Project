@@ -64,11 +64,11 @@
     <!-- Tabs -->
     <div class="flex gap-2" id="filterBtn">
         <button onclick="toggleStyle('all-btn')"
-            class="btn bg-[#3B82F6] md:px-8 md:py-2 text-white rounded cursor-pointer" id="all-btn">
+            class="btn md:px-8 md:py-2  rounded cursor-pointer" id="all-btn">
             All
         </button>
         <button onclick="toggleStyle('interview-btn')"
-            class="btn bg-gray-100 text-[#64748B] md:px-8 md:py-2 rounded cursor-pointer" id="interview-btn">
+            class="btn md:px-8 md:py-2 rounded cursor-pointer" id="interview-btn">
             Interview
         </button>
         <button onclick="toggleStyle('rejected-btn')"
@@ -79,8 +79,8 @@
 
 
     <!-- Jobs Cards -->
-    <div>
-        <section>
+    <div id="jobs-container">
+        <section id="all-container">
             <!-- card 1 -->
             <div class="my-4 p-6 bg-[#F1F2F4] sm:flex justify-between rounded-xl">
                 <div>
@@ -121,12 +121,12 @@
         </section>
 
         <!-- interview container -->
-        <section>
+        <section id="interview-container">
             interview container
         </section>
 
-        <!-- reject container -->
-        <section>
+        <!-- rejected container -->
+        <section id="rejected-container">
             reject container
         </section>
     </div>
