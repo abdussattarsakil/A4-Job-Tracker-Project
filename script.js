@@ -1,3 +1,5 @@
+console.log('hi , connected');
+
 let currentTab = 'all-btn'
 
 const tabActive = ['bg-[#3B82F6]', 'text-white']
@@ -52,15 +54,15 @@ totalCount.innerText = allContainer.children.length;
 document.getElementById('jobs-container')
 .addEventListener("click", function (event) {
     const clickBtn = event.target;
-    if (clickBtn.classList.contains('interviewBtn')) {
+    if (clickBtn.closest('.interviewBtn')) {
         console.log('hi interviewBtn , how are you baby?');
     }
 
-    if (clickBtn.classList.contains('rejectedBtn')) {
+    if (clickBtn.closest('.rejectedBtn')) {
         console.log('hi failureBtn , how are you baby?');
     }
 
-    if (clickBtn.classList.contains('deleteBtn')) {
-        console.log('hi deleteBtn , how are you baby?');
+    if (clickBtn.closest('.deleteBtn')) {
+        console.log('hi , Sakil I am here');
     }
 })
