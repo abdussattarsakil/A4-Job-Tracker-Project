@@ -24,8 +24,8 @@ function toggleStyle(tab) {
         }
     }
 
-    const pages=[allContainer,interviewContainer,rejectedContainer];
-    for(const page of pages){
+    const pages = [allContainer, interviewContainer, rejectedContainer];
+    for (const page of pages) {
         page.classList.add('hidden')
     }
 
@@ -42,8 +42,25 @@ function toggleStyle(tab) {
 }
 toggleStyle(currentTab);
 //-----count update
-let totalCount=document.getElementById('total')
-let interviewCount=document.getElementById('interview-count')
-let rejectedCount=document.getElementById('rejected-count')
+let totalCount = document.getElementById('total')
+let interviewCount = document.getElementById('interview-count')
+let rejectedCount = document.getElementById('rejected-count')
 
-totalCount.innerText=allContainer.children.length
+totalCount.innerText = allContainer.children.length;
+
+
+document.getElementById('jobs-container')
+.addEventListener("click", function (event) {
+    const clickBtn = event.target;
+    if (clickBtn.classList.contains('interviewBtn')) {
+        console.log('hi interviewBtn , how are you baby?');
+    }
+
+    if (clickBtn.classList.contains('rejectedBtn')) {
+        console.log('hi failureBtn , how are you baby?');
+    }
+
+    if (clickBtn.classList.contains('deleteBtn')) {
+        console.log('hi deleteBtn , how are you baby?');
+    }
+})
