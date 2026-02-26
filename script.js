@@ -1,6 +1,6 @@
 console.log('hi , connected');
 
-let currentTab = 'all-btn'
+let currentTab = 'allBtn'
 
 const tabActive = ['bg-[#3B82F6]', 'text-white']
 const tabInActive = ['bg-gray-100', 'text-[#64748B]']
@@ -9,16 +9,21 @@ const allContainer = document.getElementById('all-container')
 const interviewContainer = document.getElementById('interview-container')
 const rejectedContainer = document.getElementById('rejected-container')
 
+const noJobs = document.querySelector('.noJobsFilterSection')
+
 
 function toggleStyle(tab) {
     //console.log(tab)
-    const tabs = ['all-btn', 'interview-btn', 'rejected-btn']
+    currentTab = tab;
+
+    const tabs = ['allBtn', 'interviewBtn', 'rejectedBtn']
 
     for (const t of tabs) {
         const tabName = document.getElementById(t)
         if (t === tab) {
             tabName.classList.remove(...tabInActive)
             tabName.classList.add(...tabActive)
+            console.log(tabName)
         }
         else {
             tabName.classList.add(...tabInActive)
@@ -31,16 +36,27 @@ function toggleStyle(tab) {
         page.classList.add('hidden')
     }
 
-    if (tab === 'all-btn') {
-        allContainer.classList.remove('hidden')
-    }
-    else if (tab === 'interview-btn') {
-        interviewContainer.classList.remove('hidden')
-    }
-    else if (tab === 'rejected-btn') {
-        rejectedContainer.classList.remove('hidden')
-    }
+    noJobs.classList.add('hidden')
 
+    if (tab === 'allBtn') {
+        allContainer.classList.remove('hidden')
+        if (allContainer.children.length == 0) {
+            noJobs.classList.remove('hidden')
+        }
+    }
+    else if (tab === 'interviewBtn') {
+        interviewContainer.classList.remove('hidden')
+        if (interviewContainer.children.length == 0) {
+            noJobs.classList.remove('hidden')
+        }
+    }
+    else if (tab === 'rejectedBtn') {
+        rejectedContainer.classList.remove('hidden')
+        if (rejectedContainer.children.length == 0) {
+            noJobs.classList.remove('hidden')
+        }
+    }
+    
 }
 toggleStyle(currentTab);
 //-----count update
@@ -48,13 +64,32 @@ let totalCount = document.getElementById('total')
 let interviewCount = document.getElementById('interview-count')
 let rejectedCount = document.getElementById('rejected-count')
 
+const showJobsNumber = document.getElementById('showJobsNumber')
 
 function jobCount() {
-    totalCount.innerText = allContainer.children.length;
-    interviewCount.innerText = interviewContainer.children.length
-    rejectedCount.innerText = rejectedContainer.children.length
-}
+    // totalCount.innerText = allContainer.children.length;
+    // interviewCount.innerText = interviewContainer.children.length
+    // rejectedCount.innerText = rejectedContainer.children.length
+    const counts = {
+        allBtn: allContainer.children.length,
+        interviewBtn: interviewContainer.children.length,
+        rejectedBtn: rejectedContainer.children.length
+    }
 
+    totalCount.innerText = counts.allBtn
+    interviewCount.innerText = counts.interviewBtn
+    rejectedCount.innerText = counts.rejectedBtn
+
+    showJobsNumber.innerText = counts[currentTab];
+
+    if(counts[currentTab]==0){
+        noJobs.classList.remove('hidden')
+    }
+    else{
+        noJobs.classList.add('hidden')
+    }
+}
+jobCount()
 // ----card filtering
 document.getElementById('jobs-container')
     .addEventListener("click", function (event) {
