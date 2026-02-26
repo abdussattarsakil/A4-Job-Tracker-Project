@@ -48,9 +48,12 @@ let totalCount = document.getElementById('total')
 let interviewCount = document.getElementById('interview-count')
 let rejectedCount = document.getElementById('rejected-count')
 
-totalCount.innerText = allContainer.children.length;
-interviewCount.innerText = interviewContainer.children.length
-rejectedCount.innerText = rejectedContainer.children.length
+
+function jobCount() {
+    totalCount.innerText = allContainer.children.length;
+    interviewCount.innerText = interviewContainer.children.length
+    rejectedCount.innerText = rejectedContainer.children.length
+}
 
 // ----card filtering
 document.getElementById('jobs-container')
@@ -60,7 +63,7 @@ document.getElementById('jobs-container')
         //console.log(card)
         const cardStatus = document.querySelector('.cardStatus')
 
-        const parentNode=card.parentNode;
+        const parentNode = card.parentNode;
 
         if (clickBtn.closest('.interviewBtn')) {
             //console.log('hi interviewBtn , how are you baby?');
@@ -69,6 +72,7 @@ document.getElementById('jobs-container')
             cardStatus.innerText = "Interviewed"
             cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
             cardStatus.classList.add('bg-green-50', 'text-green-500')
+            jobCount();
         }
 
         if (clickBtn.closest('.rejectedBtn')) {
@@ -77,11 +81,13 @@ document.getElementById('jobs-container')
             cardStatus.innerText = "Rejected"
             cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
             cardStatus.classList.add('bg-red-50')
+            jobCount();
         }
 
         if (clickBtn.closest('.deleteBtn')) {
             //console.log('hi , Sakil I am here');
             //console.log(parentNode);
             parentNode.removeChild(card);
+            jobCount();
         }
     })
