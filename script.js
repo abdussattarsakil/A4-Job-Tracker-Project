@@ -49,26 +49,39 @@ let interviewCount = document.getElementById('interview-count')
 let rejectedCount = document.getElementById('rejected-count')
 
 totalCount.innerText = allContainer.children.length;
-interviewCount.innerText=interviewContainer.children.length
-rejectedCount.innerText=rejectedContainer.children.length
+interviewCount.innerText = interviewContainer.children.length
+rejectedCount.innerText = rejectedContainer.children.length
 
-
+// ----card filtering
 document.getElementById('jobs-container')
-.addEventListener("click", function (event) {
-    const clickBtn = event.target;
-    const card =clickBtn.closest('.card')
-    //console.log(card)
-    if (clickBtn.closest('.interviewBtn')) {
-        //console.log('hi interviewBtn , how are you baby?');
-        interviewContainer.append(card)
-    }
+    .addEventListener("click", function (event) {
+        const clickBtn = event.target;
+        const card = clickBtn.closest('.card')
+        //console.log(card)
+        const cardStatus = document.querySelector('.cardStatus')
 
-    if (clickBtn.closest('.rejectedBtn')) {
-        //console.log('hi failureBtn , how are you baby?');
-        rejectedContainer.append(card)
-    }
+        const parentNode=card.parentNode;
 
-    if (clickBtn.closest('.deleteBtn')) {
-        //console.log('hi , Sakil I am here');
-    }
-})
+        if (clickBtn.closest('.interviewBtn')) {
+            //console.log('hi interviewBtn , how are you baby?');
+            interviewContainer.append(card)
+
+            cardStatus.innerText = "Interviewed"
+            cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
+            cardStatus.classList.add('bg-green-50', 'text-green-500')
+        }
+
+        if (clickBtn.closest('.rejectedBtn')) {
+            //console.log('hi failureBtn , how are you baby?');
+            rejectedContainer.append(card)
+            cardStatus.innerText = "Rejected"
+            cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
+            cardStatus.classList.add('bg-red-50')
+        }
+
+        if (clickBtn.closest('.deleteBtn')) {
+            //console.log('hi , Sakil I am here');
+            //console.log(parentNode);
+            parentNode.removeChild(card);
+        }
+    })
