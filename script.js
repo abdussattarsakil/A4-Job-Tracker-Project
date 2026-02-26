@@ -49,20 +49,26 @@ let interviewCount = document.getElementById('interview-count')
 let rejectedCount = document.getElementById('rejected-count')
 
 totalCount.innerText = allContainer.children.length;
+interviewCount.innerText=interviewContainer.children.length
+rejectedCount.innerText=rejectedContainer.children.length
 
 
 document.getElementById('jobs-container')
 .addEventListener("click", function (event) {
     const clickBtn = event.target;
+    const card =clickBtn.closest('.card')
+    //console.log(card)
     if (clickBtn.closest('.interviewBtn')) {
-        console.log('hi interviewBtn , how are you baby?');
+        //console.log('hi interviewBtn , how are you baby?');
+        interviewContainer.append(card)
     }
 
     if (clickBtn.closest('.rejectedBtn')) {
-        console.log('hi failureBtn , how are you baby?');
+        //console.log('hi failureBtn , how are you baby?');
+        rejectedContainer.append(card)
     }
 
     if (clickBtn.closest('.deleteBtn')) {
-        console.log('hi , Sakil I am here');
+        //console.log('hi , Sakil I am here');
     }
 })
