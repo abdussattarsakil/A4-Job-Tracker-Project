@@ -103,6 +103,7 @@ document.getElementById('jobs-container')
         if (clickBtn.closest('.interviewBtn')) {
             //console.log('hi interviewBtn , how are you baby?');
             interviewContainer.append(card)
+            card.classList.add('border-l-5','border-green-400')
 
             cardStatus.innerText = "Interviewed"
             cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
@@ -113,6 +114,7 @@ document.getElementById('jobs-container')
         if (clickBtn.closest('.rejectedBtn')) {
             //console.log('hi failureBtn , how are you baby?');
             rejectedContainer.append(card)
+            card.classList.add('border-l-5', 'border-red-400')
             cardStatus.innerText = "Rejected"
             cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
             cardStatus.classList.add('bg-red-50', 'text-red-500')
