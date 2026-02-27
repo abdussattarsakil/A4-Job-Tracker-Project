@@ -56,7 +56,7 @@ function toggleStyle(tab) {
             noJobs.classList.remove('hidden')
         }
     }
-    
+
 }
 toggleStyle(currentTab);
 //-----count update
@@ -82,10 +82,10 @@ function jobCount() {
 
     showJobsNumber.innerText = counts[currentTab];
 
-    if(counts[currentTab]==0){
+    if (counts[currentTab] == 0) {
         noJobs.classList.remove('hidden')
     }
-    else{
+    else {
         noJobs.classList.add('hidden')
     }
 }
