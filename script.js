@@ -115,7 +115,7 @@ document.getElementById('jobs-container')
             rejectedContainer.append(card)
             cardStatus.innerText = "Rejected"
             cardStatus.classList.remove('text-[#002C5C]', 'bg-white')
-            cardStatus.classList.add('bg-red-50')
+            cardStatus.classList.add('bg-red-50', 'text-red-500')
             jobCount();
         }
 
